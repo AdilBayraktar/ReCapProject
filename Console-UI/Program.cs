@@ -18,7 +18,7 @@ namespace Console_UI
 
             carManager.Add(new Car { Description = "Kia" });
 
-            Console.WriteLine("---------------------");
+            Console.WriteLine("----------After Adding-----------");
 
             foreach (var car in carManager.GetAll())
             {
