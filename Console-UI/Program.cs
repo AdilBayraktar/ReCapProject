@@ -24,6 +24,7 @@ namespace Console_UI
             {
                 Console.WriteLine(car.Description);
             }
+            Console.WriteLine("test");
         }
     }
 }
