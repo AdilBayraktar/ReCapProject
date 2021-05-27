@@ -1,13 +1,11 @@
 ﻿using Entities.Concrete;
-
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataAccess.Abstracts
 {
-    public interface ICarDal : IEntityRespository<Car>
+    public interface IBrandDal : IEntityRespository<Brand>
     {
-        
     }
 }
