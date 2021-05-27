@@ -12,10 +12,10 @@ namespace Console_UI
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            carManager.Add(new Car { CarId = 1, CarName = "BMW", DailyPrice = 158000, CarDescription = "BMW X6", ModelYear = "2020" });
-            carManager.Add(new Car { CarId = 2, CarName = "Kia", DailyPrice = 142000, CarDescription = "Kia Sportag", ModelYear = "2018" });
-            carManager.Add(new Car { CarId = 3, CarName = "Audi", DailyPrice = 215000, CarDescription = "Audi A8", ModelYear = "2021" });
-            carManager.Add(new Car { CarId = 4, CarName = "Ford", DailyPrice = 139000, CarDescription = "Ford Focus", ModelYear = "2018" });
+            carManager.Add(new Car { CarId = 1, BrandId = 1, ColorId = 1, CarName = "BMW", DailyPrice = 158000, CarDescription = "BMW X6", ModelYear = "2020" });
+            carManager.Add(new Car { CarId = 2, BrandId = 2, ColorId = 2, CarName = "Kia", DailyPrice = 142000, CarDescription = "Kia Sportag", ModelYear = "2018" });
+            carManager.Add(new Car { CarId = 3, BrandId = 3, ColorId = 3, CarName = "Audi", DailyPrice = 215000, CarDescription = "Audi A8", ModelYear = "2021" });
+            carManager.Add(new Car { CarId = 4, BrandId = 4, ColorId = 4, CarName = "Ford", DailyPrice = 139000, CarDescription = "Ford Focus", ModelYear = "2018" });
             foreach (var car in carManager.GetAll())
             {
                 Console.WriteLine(car.CarName);
