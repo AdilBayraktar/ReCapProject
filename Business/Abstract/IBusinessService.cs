@@ -5,16 +5,16 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IBusinessService
+    public interface IBusinessService<T>
     {
-        List<Car> GetAll();
+        List<T> GetAll();
 
-        List<Car> GetById(int categoryId);
+        T GetById(int id);
 
-        void Add(Car car);
+        void Add(T entity);
 
-        void Delete(Car car);
+        void Delete(T entity);
 
-        void Update(Car car);
+        void Update(T entity);
     }
 }
