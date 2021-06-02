@@ -1,4 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstracts;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -16,41 +19,51 @@ namespace Business.Concrete
         {
             _CarDal = carDal;
         }
-        public List<Car> GetAll()   
+        public IDataResult<List<Car>> GetAll()   
         {
-            return _CarDal.GetAll();
+            if (DateTime.Now.Hour == 22)
+            {
+                return new ErrorDataResult<List<Car>>(Massages.MaintenanceTime);
+            }
+            return new SuccessDataResult<List<Car>>(_CarDal.GetAll(),Massages.Listed);
         }
-        public List<Car> GetCarsByBrandId(int id)
+        public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
-            return _CarDal.GetAll(c => c.BrandId == id);
+            
+            return new SuccessDataResult<List<Car>>(_CarDal.GetAll(c => c.BrandId == id),Massages.Listed);
         }
 
-        public List<Car> GetCarsByColorId(int id)
+        public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
-            return _CarDal.GetAll(c => c.ColorId == id);
+            return new SuccessDataResult<List<Car>>(_CarDal.GetAll(c => c.ColorId == id),Massages.Listed);
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
             if (car.DailyPrice >0 && car.CarName.Length > 2)
             {
-                _CarDal.Add(car);
+                 _CarDal.Add(car);
+                return new SuccessResult(Massages.Added);
             }
+            return new ErrorResult(Massages.CarNameInvalid);
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             _CarDal.Delete(car);
+            return new SuccessResult(Massages.Deleted);
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             _CarDal.Update(car);
+            return new SuccessResult(Massages.Updated);
         }
 
-        Car IBusinessService<Car>.GetById(int id)
+        public IDataResult <Car> GetById(int id)
         {
-            return _CarDal.Get(c => c.CarId == id);
+
+            return new SuccessDataResult<Car>(_CarDal.Get(c => c.CarId == id),Massages.Listed);
         }
 
         public List<CarDetailsDto> GetCarsDetails()

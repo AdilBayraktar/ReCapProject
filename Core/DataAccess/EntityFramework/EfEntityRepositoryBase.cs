@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Core.DataAccess.EntityFramework
 {
-    public class EfEntityRepositoryBase<TEntity , TContext> : IEntityRespository<TEntity>
+    public class EfEntityRepositoryBase<TEntity , TContext> : IEntityRepository<TEntity>
         where TEntity: class, IEntity, new()
         where TContext: DbContext , new()
     {
@@ -52,7 +52,7 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
-        TEntity IEntityRespository<TEntity>.Get(Expression<Func<TEntity, bool>> filter)
+        TEntity IEntityRepository<TEntity>.Get(Expression<Func<TEntity, bool>> filter)
         {
             using (TContext context = new TContext())
             {
