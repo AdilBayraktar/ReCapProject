@@ -73,6 +73,7 @@ namespace Console_UI
             brandManager.Add(new Brand { BrandId = 3, BrandName = "Audi" });
             brandManager.Add(new Brand { BrandId = 4, BrandName = "Ford" });
             brandManager.Add(new Brand { BrandId = 5, BrandName = "Mercedes" });
+            brandManager.Add(new Brand { BrandId = 6, BrandName = "Fiat"});
 
             if (brands.Success == true)
             {
